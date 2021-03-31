@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Service_Invoice_Number__c</fullName>
+    <description>Service Invoices should be identified with an Invoice Number field which should take the format INV-{0000}.</description>
+    <displayFormat>INV-{0000}</displayFormat>
+    <externalId>false</externalId>
+    <label>Service Invoice Number</label>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

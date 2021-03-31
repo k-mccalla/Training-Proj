@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VAT_rate</fullName>
+    <active>true</active>
+    <description>VAT rate must not be negative or exceed max tax rate.</description>
+    <errorConditionFormula>OR( VAT_Rate__c &lt; 0,
+VAT_Rate__c &gt; 0.27)</errorConditionFormula>
+    <errorDisplayField>VAT_Rate__c</errorDisplayField>
+    <errorMessage>VAT rate must not be a negative number or exceed 27.</errorMessage>
+</ValidationRule>

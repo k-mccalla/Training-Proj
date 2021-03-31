@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_rating__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Status__c, &quot;Paid&quot;), 
+ IMAGE(&quot;/img/icon/entitlements24.png&quot;, &quot;Gold Medal&quot;),
+IF(ISPICKVAL(Status__c, &quot;Submitted&quot;), 
+IMAGE(&quot;/img/samples/flag_red.gif&quot;, &quot;Red to-do flag&quot;),
+
+IF(ISPICKVAL(Status__c, &quot;Draft&quot;), 
+IMAGE(&quot;/img/func_icons/util/pencil12.gif&quot;, &quot;Draft pencil&quot;),
+
+
+
+&quot;No status&quot;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status rating</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

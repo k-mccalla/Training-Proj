@@ -1,0 +1,159 @@
+<apex:page Controller = "CustController" renderAs="pdf" applyBodyTag="false" showHeader="true">
+    
+    <head>
+        <style> 
+            body { font-family: 'Arial Unicode MS'; }
+            .Invoice_Owner__c { font: bold 30px; color: rgb(33, 231, 92); } 
+
+ 
+                font-size: 14px;
+                position: relative;
+     <apex:includeScript value=''/>
+     
+    
+           
+        </style>
+    </head>
+    <h1>Invoice</h1>
+    <h2>ForceTrainingLTD</h2>
+  
+
+    <body>
+    
+
+
+
+        <center>
+            <apex:pageBlock> 
+        
+<center>
+        <apex:pageBlockTable value="{! Invoices }" var="in">
+        <h4>Invoice for <apex:column value="{! in.Invoice_Owner__c }"/></h4>
+
+    </apex:pageBlockTable>
+</center>
+</apex:pageBlock> 
+
+        </center>
+        
+
+<table>
+
+
+    
+    <apex:pageBlock >
+      
+    
+
+  
+<apex:pageBlockTable value="{! Invoices }" var="in" border ="2"> 
+  
+     <tr>
+         <apex:outputLabel value="Invoice Number"/>
+        <apex:column value="{! in.Name }"/> 
+       
+    <apex:column value="{! in.RecordTypeId }"/>
+    <apex:column value="{! in.Invoice_Date__c }"/>
+    </tr>
+</apex:pageBlockTable>
+
+</apex:pageBlock> 
+   
+
+</table>
+
+
+<!--  Main table with invoice lines -->
+
+<apex:dataTable value="{!lineItems}" var="line" border = "3" width="710px" columnsWidth="35px,300px, 20px,30px, 40px,65px,90px" styleClass="docTable" 
+headerClass="docTHeader" columnClasses="docTColumns" footerClass="docTFooter" rowClasses="odd,even">
+
+<apex:column>
+    <apex:facet name="header">ID</apex:facet>
+    <apex:outputText value= "{!line.Name}"/>
+
+</apex:column>
+<apex:column > 
+    <apex:facet name="header">Date</apex:facet>
+    <apex:outputText value="{0, date, MMMM d','  yyyy}">
+        <apex:param value= "{!line.Date__c}"/>
+    </apex:outputText>
+   
+</apex:column>
+<apex:column > 
+    <apex:facet name="header">Description</apex:facet>
+    <apex:outputText value= "{!line.Description_of_expense__c}"/>
+</apex:column>
+ 
+<apex:column > 
+    <apex:facet name="header">Amount</apex:facet>
+    <apex:outputText value="{0, number, £#,###.##}">
+        <apex:param value="{!line.Amount__c}"/>
+    </apex:outputText>
+
+</apex:column>
+<apex:column > 
+    <apex:facet name="header">VAT of Line Item</apex:facet>
+    <apex:outputText value="{0, number, £#,###.##}">
+        <apex:param value="{!line.VAT__c}"/>
+    </apex:outputText>
+</apex:column>
+
+<apex:column > 
+    <apex:facet name="header">Total Amount</apex:facet>
+    <apex:outputText value="{0, number, £#,###.##}">
+        <apex:param value="{!line.Total_Amount__c}"/>
+    </apex:outputText>
+</apex:column>
+
+
+</apex:dataTable>
+
+<!--  Bottom table with total invoice calculations-->
+
+<apex:dataTable value="{!invoices}" var="inv" id="invInfo" border ="1" width="710px" columnsWidth="35px,300px, 20px,50px, 90px,65px,90px" styleClass="docTable" 
+headerClass="docTHeader" columnClasses="docTColumns" footerClass="docTFooter" rowClasses="odd,even">
+<apex:column > 
+    <apex:facet name="header">VAT Rate</apex:facet>
+    <apex:outputText value="{0,number,0}%">
+        <apex:param value="{!inv.VAT_Rate__c}"/>
+    </apex:outputText>
+</apex:column>
+
+
+
+<apex:column > 
+    <apex:facet name="header">Tax Rate</apex:facet>
+    <apex:outputText value="{0,number,0}%">
+        <apex:param value="{!inv.Tax_rate__c}"/>
+    </apex:outputText>
+</apex:column>
+
+<apex:column > 
+    <apex:facet name="header">Sub Total</apex:facet>
+    <apex:outputText value="{0, number, £#,###.##}">
+        <apex:param value="{!inv.Subtotal__c}"/>
+    </apex:outputText>
+</apex:column>
+
+<apex:column > 
+    <apex:facet name="header">VAT</apex:facet>
+    <apex:outputText value="{0, number, £#,###.##}">
+        <apex:param value="{!inv.VAT_Total__c}"/>
+    </apex:outputText>
+</apex:column>
+
+<apex:column > 
+    <apex:facet name="header">Invoice Total</apex:facet>
+    <apex:outputText value="{0, number, £#,###.##}">
+        <apex:param value="{!inv.Invoice_Total__c}"/>
+    </apex:outputText>
+</apex:column>
+
+</apex:dataTable>
+
+       
+    </body>
+</apex:page>
+
+

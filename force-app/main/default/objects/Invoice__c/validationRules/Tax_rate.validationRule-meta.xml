@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tax_rate</fullName>
+    <active>true</active>
+    <description>Tax rate must not be a negative number or exceeding 45.</description>
+    <errorConditionFormula>OR( Tax_rate__c &lt; 0,
+
+ Tax_rate__c &gt; 0.45)</errorConditionFormula>
+    <errorDisplayField>Tax_rate__c</errorDisplayField>
+    <errorMessage>Tax rate must not be negative or exceed 45.</errorMessage>
+</ValidationRule>
